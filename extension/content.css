@@ -1,0 +1,196 @@
+/* ─── PR Preview Vercel ─ Content Styles ──────────────────────────────────── */
+
+/* ── Botão base ─────────────────────────────────────────────────────────────── */
+.prpv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  border-radius: 6px;
+  border: 1px solid rgba(27,31,36,0.15);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
+  line-height: 1;
+  vertical-align: middle;
+  position: relative;
+}
+
+/* ── Variantes de estado ─────────────────────────────────────────────────────── */
+.prpv-btn--loading {
+  background: #f6f8fa;
+  color: #57606a;
+  border-color: #d0d7de;
+  cursor: wait;
+}
+
+.prpv-btn--ready {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+.prpv-btn--ready:hover {
+  background: #24292f;
+  border-color: #24292f;
+}
+
+.prpv-btn--notfound {
+  background: #f6f8fa;
+  color: #57606a;
+  border-color: #d0d7de;
+}
+.prpv-btn--notfound:hover {
+  background: #eaeef2;
+}
+
+.prpv-btn--error {
+  background: #fff1f0;
+  color: #cf222e;
+  border-color: #ffccc7;
+}
+.prpv-btn--error:hover {
+  background: #ffe7e6;
+}
+
+.prpv-btn--setup {
+  background: #fff8c5;
+  color: #7d4e00;
+  border-color: #e3b341;
+}
+.prpv-btn--setup:hover {
+  background: #fff1a8;
+}
+
+/* ── Spinner de loading ───────────────────────────────────────────────────────── */
+.prpv-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid #d0d7de;
+  border-top-color: #0969da;
+  border-radius: 50%;
+  animation: prpv-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes prpv-spin { to { transform: rotate(360deg); } }
+
+/* ── Ícone SVG no botão ready ─────────────────────────────────────────────────── */
+.prpv-icon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* ── Painel de detalhes ───────────────────────────────────────────────────────── */
+.prpv-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 6px;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #1f2328;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(27,31,36,0.1);
+  min-width: 280px;
+  max-width: 420px;
+  animation: prpv-fadein 0.15s ease;
+}
+
+.prpv-panel--hidden {
+  display: none;
+}
+
+@keyframes prpv-fadein {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.prpv-panel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-bottom: 1px solid #f6f8fa;
+}
+.prpv-panel-row:last-child { border-bottom: none; }
+
+.prpv-panel-header {
+  background: #f6f8fa;
+  font-weight: 500;
+  gap: 6px;
+}
+
+.prpv-panel-label {
+  color: #57606a;
+  min-width: 52px;
+  flex-shrink: 0;
+}
+
+.prpv-panel-meta {
+  margin-left: auto;
+  color: #57606a;
+  font-size: 11px;
+}
+
+.prpv-panel-url a {
+  color: #0969da;
+  text-decoration: none;
+  word-break: break-all;
+}
+.prpv-panel-url a:hover { text-decoration: underline; }
+
+.prpv-panel code {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 11px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: #1f2328;
+}
+
+.prpv-sha {
+  color: #57606a !important;
+  margin-left: 4px;
+}
+
+/* ── Status dots ──────────────────────────────────────────────────────────────── */
+.prpv-state-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #d0d7de;
+}
+.prpv-state--ready    .prpv-state-dot,
+.prpv-state-dot.prpv-state--ready   { background: #1a7f37; }
+.prpv-state--building .prpv-state-dot,
+.prpv-state-dot.prpv-state--building { background: #bf8700; animation: prpv-pulse 1.2s ease-in-out infinite; }
+.prpv-state--error    .prpv-state-dot,
+.prpv-state-dot.prpv-state--error   { background: #cf222e; }
+
+@keyframes prpv-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Container fallback ───────────────────────────────────────────────────────── */
+.prpv-fallback {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: #f6f8fa;
+  border-bottom: 1px solid #d0d7de;
+  padding: 8px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-direction: column;
+}
